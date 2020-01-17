@@ -5,6 +5,7 @@ import 'package:providr/providers/cart_state.dart';
 import 'package:providr/providers/products_state.dart';
 import 'package:providr/screens/add_product_screen.dart';
 import 'package:providr/screens/cart_screen.dart';
+import 'package:providr/screens/product_detail_screen.dart';
 
 
 void main() => runApp(MyApp());
@@ -80,6 +81,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     icon: Icon(Icons.add_shopping_cart),
                     onPressed: ()=> cartState.add(product: product),
                   ),
+                  onTap: ()=> this._viewDetails(product.id),
                 );
               }).toList(),
 
@@ -121,5 +123,13 @@ class _ProductsScreenState extends State<ProductsScreen> {
       )
     );
   }// void _goAddProduct() { .. }
+
+  void _viewDetails(String id) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context)=> ProductDetailScreen(id)
+      )
+    );
+  }
 
 }

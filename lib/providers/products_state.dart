@@ -24,6 +24,12 @@ class ProductsState with ChangeNotifier {
     notifyListeners();
   }// void addProduct(Product product) { .. }
 
+  Product getProduct(String id) {
+    final product = this.products.where((Product prod) {
+      return prod.id == id;
+    }).toList()[0];
+    return product;
+  }// Product getProduct(String id) { .. }
 
 
 }
